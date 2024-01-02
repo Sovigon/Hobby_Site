@@ -1,0 +1,2 @@
+marble_bird_wasp_legs.png
+Made for a friend that was making an RPG; never got around to animating it, the legs collapse into a stinger.

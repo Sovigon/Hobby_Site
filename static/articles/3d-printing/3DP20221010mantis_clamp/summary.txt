@@ -1,0 +1,2 @@
+mantis_clamp.jpg
+A fun design made to hold small circuit board. Another cool example of additive manufacturing - the gears are printed at the same time with the rest of the model!
