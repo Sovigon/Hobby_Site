@@ -1,7 +1,7 @@
 # To initialize a test, use "python -m flask run" from the folder
 
 from flask import Flask, render_template
-from os import walk 
+from os import walk
 import calendar as cal
 
 app = Flask(__name__)
@@ -19,21 +19,21 @@ def hobby(article_arg):
     articles = article_gen(article_arg)
 
     return render_template(
-        "hobby.html", 
-        article_arg=article_arg, 
+        "hobby.html",
+        article_arg=article_arg,
         articles=articles
     )
 
 # Functions
 
 def article_gen(article_arg):
-    article_folder = next(walk('static/articles/' + article_arg))[1]
+    article_folder = sorted(next(walk('/home/Sovigon/Hobby_Site/static/articles/' + article_arg))[1])
     print(article_folder)
 
     # 3 Character Code to Hobby Folder Lookup
     hobby_types = {
-        'art':'art', 
-        'pgm':'coding', 
+        'art':'art',
+        'pgm':'coding',
         '3dp':'3d-printing'
     }
 
@@ -63,9 +63,9 @@ def article_gen(article_arg):
         article_add.append((article[11:].replace("_", " ")).title())
         # 7 Article Folder Name
         article_add.append(article)
-        
+
         article_list.append(article_add)
-    
+
     return article_list
 
 @app.context_processor
@@ -77,10 +77,10 @@ def file_reader():
     def summary_reader(hobby, folder):
 
         f = open(
-            "static/articles/" + 
-            hobby + "/" + 
-            folder + 
-            "/summary.txt", 
+            "/home/Sovigon/Hobby_Site/static/articles/" +
+            hobby + "/" +
+            folder +
+            "/summary.txt",
             "r"
         )
 
@@ -91,10 +91,10 @@ def file_reader():
         while True:
 
             txt_line = f.readline()
-    
+
             if count == 0:
                 thmbnl = txt_line
-            
+
             elif not txt_line:
                 break
 
@@ -102,11 +102,10 @@ def file_reader():
                 summary.append(txt_line)
 
             count += 1
-        
+
         f.close()
 
         return thmbnl, summary
-    
+
     return dict(summary_reader=summary_reader)
 
-        

@@ -7,36 +7,36 @@
     {% for article in articles %}
 
     <div class="articles">
-        
+
         <div class="consign">
-        
-            <img id="thumbnail" 
-            src="static/articles/{{ article[1] }}/{{article[-1]}}/{{ summary_reader(article[1], article[-1])[0] }}"
+
+            <img id="thumbnail"
+            src="/static/articles/{{article[1]}}/{{article[-1]}}/{{summary_reader(article[1], article[-1])[0]}}"
             style="object-fit: contain;
             width: 250px;
             height: 250px"/>
 
             <div class="descripts">
-            
+
                 <h3>{{ article[6] }}</h3>
 
                 {% for summary in summary_reader(article[1], article[-1])[1] %}
-                
+
                 <p>{{ summary }}</p>
 
                 {% endfor %}
 
                 <div class="metadata">
-                    
+
                     <h3>Made {{ article[4] }} {{ article[5] }}, {{ article[2] }}</h3>
 
-                </div>            
+                </div>
             </div>
         </div>
     </div>
-        
+
     {% endfor %}
-        
+
 
 </div>
 {% endblock %}
